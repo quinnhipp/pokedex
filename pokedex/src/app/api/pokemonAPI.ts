@@ -3,11 +3,12 @@ import { off } from "process";
 const POKEMON_API = "https://pokeapi.co/api/v2/"
 
 export async function getPokemonList(dexSize: number, offset: number) {
-    const response = await fetch(POKEMON_API + "pokemon?limit=" + {dexSize} + "&offset=" + {offset});
+    const request = POKEMON_API + "pokemon?limit=" + dexSize + "&offset=" + offset
+    const response = await fetch(request);
     const data = await response.json();
     const results = data.results
     console.log("Dex Size: " + dexSize + "\tOffset: " + offset + "\nList: " + results.length)
-    console.log(POKEMON_API + "pokemon?limit=" + dexSize + "&offset=" +  offset)
+    console.log("Request: " + request)
     return results;
 }
 

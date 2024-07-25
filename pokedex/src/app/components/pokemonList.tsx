@@ -10,16 +10,7 @@ import PokemonCard from "./pokemonCard";
 import { useState, useEffect } from "react";
 import { getPokemonList } from "../api/pokemonAPI";
 import { log } from "console";
-
-type PokemonGridProps = {
-  pokemonList: any;
-};
-
-type GENERATION = {
-  name: string;
-  dexSize: number;
-  offset: number;
-};
+import { GENERATION, POKEMON, POKEMONGRIDPROPS } from "../types";
 
 const gens: GENERATION[] = [
   { name: "All Pokemon", dexSize: 1025, offset: 0 },
@@ -44,7 +35,7 @@ const gens: GENERATION[] = [
 //   return value;
 // }
 
-const PokemonList = ({ pokemonList }: PokemonGridProps) => {
+const PokemonList = ({ pokemonList }: POKEMONGRIDPROPS) => {
   const [generation, setGeneration] = useState(gens[0].name);
   //   const gen: GENERATION = getGen(generation);
 
@@ -80,7 +71,7 @@ const PokemonList = ({ pokemonList }: PokemonGridProps) => {
         </DropdownMenu>
       </Dropdown>
       <div className="grid gap-8 grid-cols-4">
-        {pokemonList.map((pokemon: any) => {
+        {pokemonList.map((pokemon: POKEMON) => {
           return <PokemonCard name={pokemon.name} key={pokemon.id} />;
         })}
       </div>

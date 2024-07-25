@@ -9,6 +9,7 @@ export async function getPokemonList(dexSize: number, offset: number) {
     const results = data.results
     console.log("Dex Size: " + dexSize + "\tOffset: " + offset + "\nList: " + results.length)
     console.log("Request: " + request)
+    console.log(results)
     return results;
 }
 
